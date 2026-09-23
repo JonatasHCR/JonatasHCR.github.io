@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jônatas Reis · Dev Full Stack</title>
+<meta name="description" content="Desenvolvedor Full Stack e estudante de Engenharia da Computação. Sistemas web completos em Python, Ruby e TypeScript, do banco à tela.">
+<meta name="author" content="Jônatas Henrique Cruz Reis">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jonatashcr.github.io/">
+<meta property="og:title" content="Jônatas Reis · Dev Full Stack">
+<meta property="og:description" content="Desenvolvedor Full Stack e estudante de Engenharia da Computação. Sistemas web completos em Python, Ruby e TypeScript, do banco à tela.">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#6d3fe6">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --bg: #fbfbf9; --ink: #1b1d22; --muted: #626772; --line: #e4e4de; --card: #ffffff;
+    --hash: #6d3fe6; --hash-bg: #efe9ff; --add: #1d8a4e; --add-bg: #e5f4ec; --tag: #b8570f; --branch: #0e7490; --branch-bg: #e0f2f7;
+    --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+    --body: "Figtree", "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #131417; --ink: #e9eaee; --muted: #9a9fab; --line: #2a2c32; --card: #1a1c20;
+      --hash: #b69cff; --hash-bg: #2a2240; --add: #5fd494; --add-bg: #173325; --tag: #f3a060; --branch: #5fd0ec; --branch-bg: #123642;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #131417; --ink: #e9eaee; --muted: #9a9fab; --line: #2a2c32; --card: #1a1c20;
+    --hash: #b69cff; --hash-bg: #2a2240; --add: #5fd494; --add-bg: #173325; --tag: #f3a060; --branch: #5fd0ec; --branch-bg: #123642;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); padding: 0 20px; }
+  h1, h2, h3, p, ul { margin: 0; }
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid var(--hash); outline-offset: 3px; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: 56px 90px; display: grid; gap: 88px; }
+  .mono { font-family: var(--mono); }
+
+  /* topo */
+  nav.top { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  nav.top div { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav.top a { text-decoration: none; }
+  nav.top a:hover { color: var(--ink); }
+
+  .hero { display: grid; gap: 20px; }
+  .prompt { font-family: var(--mono); font-size: 14px; color: var(--muted); }
+  .prompt b { color: var(--add); font-weight: 500; }
+  .hero h1 { font-family: var(--display); font-size: clamp(44px, 7.2vw, 86px); line-height: .98; font-weight: 800; letter-spacing: -.03em; max-width: 14em; }
+  .hero h1 span { color: var(--hash); }
+  .hero .lead { font-size: 20px; max-width: 38em; }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: 13px; }
+  .chips span, .chips a { border: 1px solid var(--line); padding: 4px 10px; border-radius: 6px; text-decoration: none; background: var(--card); }
+  .chips a:hover { border-color: var(--hash); color: var(--hash); }
+  .chips .open { color: var(--add); border-color: currentColor; background: transparent; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 12px; background: var(--card); margin-top: 16px; }
+  .stats div { padding: 18px 20px; display: grid; gap: 2px; }
+  .stats div + div { border-left: 1px solid var(--line); }
+  .stats b { font-family: var(--display); font-size: 34px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stats span { font-size: 14px; color: var(--muted); }
+
+  /* títulos de seção */
+  .h2 { font-family: var(--display); font-size: 32px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 24px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .h2 small { font-family: var(--mono); font-size: 13px; color: var(--muted); font-weight: 400; letter-spacing: 0; }
+
+  /* sobre */
+  .about { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: start; }
+  .about .text { display: grid; gap: 16px; font-size: 18px; max-width: 36em; }
+  .about .text p:last-child { color: var(--muted); font-size: 16.5px; }
+  .principles { display: grid; gap: 12px; }
+  .pr { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; }
+  .pr h3 { font-family: var(--mono); font-size: 13px; color: var(--hash); font-weight: 500; }
+  .pr p { font-size: 15px; color: var(--muted); }
+  .pr p b { color: var(--ink); font-weight: 600; }
+
+  /* log */
+  .log { display: grid; }
+  .commit { display: grid; grid-template-columns: 96px 30px 1fr; gap: 0 16px; }
+  .when { font-family: var(--mono); font-size: 12.5px; color: var(--muted); padding-top: 24px; text-align: right; }
+  .rail { position: relative; }
+  .rail::before { content: ""; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+  .rail::after { content: ""; position: absolute; left: 8px; top: 27px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--hash); }
+  .commit.head .rail::after { background: var(--hash); }
+  .commit.branch .rail::after { border-color: var(--branch); border-radius: 3px; transform: rotate(45deg); }
+  .commit:last-child .rail::before { bottom: auto; height: 34px; }
+
+  .box { margin: 12px 0 22px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; }
+  .commit.branch .box { border-style: dashed; border-color: var(--branch); }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .hash { font-family: var(--mono); font-size: 12px; background: var(--hash-bg); color: var(--hash); padding: 1px 8px; border-radius: 5px; }
+  .ref { font-family: var(--mono); font-size: 12px; color: var(--tag); border: 1px solid currentColor; padding: 0 7px; border-radius: 5px; }
+  .ref.br { color: var(--branch); background: var(--branch-bg); border-color: transparent; }
+  .ref.ok { color: var(--add); background: var(--add-bg); border-color: transparent; }
+  .box h3 { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -.015em; line-height: 1.15; }
+  .box .pitch { font-size: 17px; max-width: 42em; }
+  .cols { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+  .box ul { list-style: none; padding: 0; display: grid; gap: 7px; }
+  .box li { padding-left: 20px; position: relative; font-size: 15px; }
+  .box li::before { content: "+"; position: absolute; left: 0; font-family: var(--mono); color: var(--add); font-weight: 700; }
+  .tech { border-left: 2px solid var(--hash-bg); padding-left: 16px; display: grid; gap: 8px; align-content: start; }
+  .tech .lbl { font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+  .tech p { font-size: 15px; color: var(--muted); }
+  .tech p b { color: var(--ink); font-weight: 600; }
+  .foot { border-top: 1px dashed var(--line); padding-top: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--mono); font-size: 12.5px; }
+  .foot .stack { color: var(--add); }
+  .foot .num { color: var(--muted); }
+  .spine { font-family: var(--mono); font-size: 13px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; overflow-x: auto; white-space: nowrap; }
+  .spine b { color: var(--hash); font-weight: 500; }
+
+  /* stack */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .skill { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; }
+  .skill h3 { font-family: var(--mono); font-size: 13px; color: var(--hash); font-weight: 500; }
+  .skill p { font-size: 15.5px; }
+  .skill small { font-size: 13px; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding-top: 30px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+  footer p { font-family: var(--display); font-size: 28px; font-weight: 700; letter-spacing: -.02em; }
+  footer p span { font-family: var(--mono); font-size: 15px; color: var(--muted); font-weight: 400; display: block; letter-spacing: 0; }
+
+  @media (max-width: 860px) {
+    .about, .cols { grid-template-columns: 1fr; }
+    .skills { grid-template-columns: 1fr 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stats div:nth-child(3) { border-left: 0; }
+    .stats div:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .commit { grid-template-columns: 1fr; }
+    .when { text-align: left; padding-top: 0; }
+    .rail { display: none; }
+    .box { margin-top: 6px; padding: 18px; }
+  }
+  @media (max-width: 520px) { .skills { grid-template-columns: 1fr; } }
+  /* sobre */
+  .sobre { display: grid; gap: 48px; }
+  .sobre > .h2 { margin-bottom: -24px; }
+  .intro { display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px; align-items: start; }
+  .intro .big { font-family: var(--display); font-size: clamp(19px, 2vw, 22px); line-height: 1.45; font-weight: 600; letter-spacing: -.015em; }
+  .intro .text { display: grid; gap: 14px; font-size: 17px; }
+  .sub { font-family: var(--display); font-size: 21px; font-weight: 700; letter-spacing: -.01em; margin: 0 0 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .sub small { font-family: var(--mono); font-size: 12.5px; color: var(--muted); font-weight: 400; }
+  .trail ol { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .trail li { background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--hash); border-radius: 10px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; font-size: 15.5px; color: var(--muted); }
+  .trail li b { color: var(--ink); }
+  .trail .y { font-family: var(--mono); font-size: 13px; color: var(--hash); }
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .pr { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 8px; align-content: start; }
+  .pr h4 { margin: 0; font-family: var(--mono); font-size: 12.5px; color: var(--hash); font-weight: 500; }
+  .pr .lead { font-size: 16px; color: var(--ink); }
+  .pr .lead b { font-weight: 600; }
+  .pr p { font-size: 14.5px; color: var(--muted); }
+  .now { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .now > div { border: 1px dashed var(--line); border-radius: 10px; padding: 18px 20px; }
+  .now .sub { margin-bottom: 6px; font-size: 18px; }
+  .now p { color: var(--muted); font-size: 15.5px; }
+  @media (max-width: 900px) {
+    .intro, .now { grid-template-columns: 1fr; }
+    .trail ol, .principles { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) { .trail ol, .principles { grid-template-columns: 1fr; } }
+
+  /* plataforma */
+  .platform { display: grid; grid-template-columns: 1fr 1.05fr; gap: 32px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 28px; margin-bottom: 28px; }
+  .pf-text { display: grid; gap: 10px; }
+  .pf-kicker { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--hash); }
+  .pf-text h3 { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -.015em; }
+  .pf-text p { font-size: 16px; }
+  .pf-text .pf-note { font-size: 14px; color: var(--branch); font-family: var(--mono); }
+  .pf-map { display: grid; }
+  .pf-apps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .pf-apps div { border: 1px solid var(--line); border-radius: 8px; padding: 10px; display: grid; gap: 2px; background: var(--bg); }
+  .pf-apps b { font-size: 14px; line-height: 1.2; }
+  .pf-apps span { font-size: 12px; color: var(--muted); line-height: 1.3; }
+  .pf-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; height: 22px; }
+  .pf-links i { justify-self: center; width: 2px; background: repeating-linear-gradient(var(--hash) 0 4px, transparent 4px 7px); }
+  .pf-hub { background: var(--hash); color: var(--card); border-radius: 8px; padding: 12px 14px; display: grid; gap: 2px; text-align: center; }
+  .pf-hub b { font-family: var(--mono); font-size: 14px; font-weight: 700; }
+  .pf-hub span { font-size: 13px; opacity: .85; }
+  .ref.pf { color: var(--hash); background: var(--hash-bg); border-color: transparent; }
+  @media (max-width: 860px) {
+    .platform { grid-template-columns: 1fr; padding: 20px; }
+    .pf-apps, .pf-links { grid-template-columns: 1fr 1fr; }
+    .pf-links { height: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="top" aria-label="Seções">
+    <span>jonatas@portfolio:~</span>
+    <div>
+      <a href="#sobre">sobre</a>
+      <a href="#projetos">projetos</a>
+      <a href="#stack">stack</a>
+      <a href="#contato">contato</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="prompt"><b>$</b> whoami</p>
+    <h1>Jônatas Reis<span>.</span> Dev Full Stack<span>.</span></h1>
+    <p class="lead">Desenvolvedor Full Stack Júnior e estudante de Engenharia da Computação na Bahia. Construo sistemas web completos, do modelo do banco à tela, entendendo a regra de negócio e validando e testando antes do código.</p>
+    <div class="chips">
+      <span>Bahia, Brasil</span>
+      <span class="open">● aberto a oportunidades</span>
+      <a href="https://github.com/JonatasHCR/" target="_blank" rel="noopener">github.com/JonatasHCR</a>
+      <a href="https://www.linkedin.com/in/jonatas-henrique-cruz-reis/" target="_blank" rel="noopener">in/jonatas-henrique-cruz-reis</a>
+    </div>
+    <div class="stats">
+      <div><b>5</b><span>sistemas construídos do zero</span></div>
+      <div><b>1.300+</b><span>testes automatizados</span></div>
+      <div><b>420+</b><span>commits no último ano</span></div>
+      <div><b>3</b><span>linguagens: Python, Ruby, TypeScript</span></div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="sobre">
+    <h2 class="h2">Sobre mim <small>cat README.md</small></h2>
+
+    <div class="intro">
+      <p class="big">Gosto de compreender o problema, seus requisitos e contexto antes de definir uma solução. Busco desenvolver aplicações eficientes, organizadas e de fácil manutenção, aplicando boas práticas de programação e aprimorando continuamente meus conhecimentos em desenvolvimento de software. Encaro novos desafios como oportunidades para aprender, experimentar novas tecnologias e evoluir minhas habilidades técnicas e profissionais.</p>
+      <div class="text">
+        <p>Trabalho de ponta a ponta. Modelo o banco, escrevo a API, construo a interface, coloco em produção com Docker e cuido do que vem depois: backup, auditoria, migração de dados e suporte a quem usa.</p>
+        <p>Hoje desenvolvo os sistemas internos da UFC Engenharia: faturamento e contratos, inventário de TI, contas a pagar e despesas por centro de custo, todos em produção e ligados por um login único. Uso três linguagens (Python, Ruby e TypeScript).</p>
+        <p>Em paralelo, curso Engenharia da Computação e levo para o código o que a engenharia ensina: requisito escrito antes de construir, e nada entregue sem teste.</p>
+      </div>
+    </div>
+
+    <div class="trail">
+      <h3 class="sub">Trajetória <small>git log --oneline --reverse</small></h3>
+      <ol>
+        <li><span class="y">2024</span><div><b>Automatizando documentos.</b> Meus primeiros projetos preenchiam documentos Word a partir de modelos, primeiro em script e depois numa aplicação Flask. Ali descobri que gosto de tirar trabalho repetitivo das pessoas.</div></li>
+        <li><span class="y">2025</span><div><b>Aprendendo a fazer direito.</b> Estudei SOLID e TDD na prática, construí um aplicativo desktop de relatórios distribuído como executável e, em setembro, coloquei meu primeiro sistema em produção: o Radar.</div></li>
+        <li><span class="y">2026</span><div><b>De sistema a plataforma.</b> Vieram o inventário, as receitas e o controle de despesas, todos atrás de um único Keycloak, com mais de 1.300 testes somando os projetos. E um projeto pessoal, o Control_Coin, especificado por inteiro antes do código.</div></li>
+      </ol>
+    </div>
+
+
+    <div class="now">
+      <div><h3 class="sub">Estudando agora</h3><p>Inteligência artificial aplicada ao desenvolvimento, orquestração de agentes de IA, orquestração de containers, arquitetura orientada a especificação, CI/CD com Jenkins, observabilidade e NestJS, tudo aplicado no Control_Coin, além da graduação em Engenharia da Computação.</p></div>
+      <div><h3 class="sub">O que procuro</h3><p>Uma vaga de desenvolvimento full stack num time onde eu possa entregar produto de ponta a ponta e aprender com gente mais experiente em arquitetura e escala.</p></div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <h2 class="h2">Projetos <small>git log --graph --since=2025-09</small></h2>
+
+    <div class="platform">
+      <div class="pf-text">
+        <p class="pf-kicker">Plataforma UFC Engenharia</p>
+        <h3>Quatro sistemas, uma plataforma</h3>
+        <p>Os sistemas abaixo não são projetos isolados. Cada um cuida de uma área da empresa, mas todos rodam no mesmo servidor, entram pelo mesmo login e conversam entre si: o inventário, por exemplo, busca os centros de custo direto da Receita.</p>
+        <p class="pf-note">O Control_Coin é meu projeto pessoal e fica fora da plataforma.</p>
+      </div>
+      <div class="pf-map" aria-label="Os quatro sistemas ligados ao login único">
+        <div class="pf-apps">
+          <div><b>Receita</b><span>faturamento e contratos</span></div>
+          <div><b>InvControl</b><span>inventário de TI</span></div>
+          <div><b>Radar</b><span>contas a pagar</span></div>
+          <div><b>Controle de Despesa</b><span>despesas por centro de custo</span></div>
+        </div>
+        <div class="pf-links" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="pf-hub"><b>Login único · Keycloak</b><span>um usuário, acesso por grupo, um portal de entrada</span></div>
+      </div>
+    </div>
+    <div class="log">
+
+      <!-- Radar -->
+      <div class="commit">
+        <div class="when">set 2025</div><div class="rail"></div>
+        <div class="box">
+          <div class="row"><span class="hash">Sistema-Despesa</span><span class="ref pf">plataforma UFC</span><span class="ref ok">em produção</span></div>
+          <h3>Radar: contas a pagar que avisam sozinhas</h3>
+          <p class="pitch">Painel web de despesas com um agente nativo do Windows que mostra, na máquina de cada pessoa, as contas que estão vencendo, sem ninguém precisar abrir o sistema.</p>
+          <div class="cols">
+            <ul>
+              <li>Cada despesa classificada em tempo real: vencida, vence em breve, a vencer ou quitada.</li>
+              <li>Destinatários por despesa e preferência de aviso por usuário (antecedência, avisar vencidas).</li>
+              <li>Agente em Python empacotado com PyInstaller que exibe um resumo diário em notificação do Windows.</li>
+              <li>Importação por planilha com modelo para download e backup/restauração pelo painel de administração.</li>
+            </ul>
+            <div class="tech">
+              <p class="lbl">Destaque técnico</p>
+              <p><b>Backend em camadas com genéricos</b> (router → service → repository): um recurso novo é uma pilha clonada, com os tipos propagados até o banco.</p>
+              <p>O navegador fala só com a própria origem; um proxy no Next.js repassa as chamadas para a API.</p>
+            </div>
+          </div>
+          <div class="foot"><span class="stack">+ FastAPI · SQLAlchemy 2 async · Alembic · Next.js 15 · TypeScript · shadcn/ui · PostgreSQL 17</span><span class="num">67 commits</span></div>
+        </div>
+      </div>
+
+      <!-- Inventário -->
+      <div class="commit">
+        <div class="when">fev 2026</div><div class="rail"></div>
+        <div class="box">
+          <div class="row"><span class="hash">Gerenciamento_de_Iventario</span><span class="ref pf">plataforma UFC</span><span class="ref ok">em produção</span></div>
+          <h3>InvControl: cada equipamento, do começo ao fim</h3>
+          <p class="pitch">Inventário de TI da empresa: computadores, monitores, impressoras, tablets, trenas digitais. Quem é o responsável, onde está, quem cedeu para quem e o histórico completo de cada peça.</p>
+          <div class="cols">
+            <ul>
+              <li>Busca por qualquer campo: série, patrimônio, IP, responsável, até "sem responsável".</li>
+              <li>Cessões e devoluções entre centros de custo, com devolução parcial em vários lotes e periféricos avulsos.</li>
+              <li>Termo de Responsabilidade e Termo de Recebimento gerados em PDF na hora.</li>
+              <li>Solicitações entre Funcionário, Subgestor e Gestor, com notificação quando algo volta para o centro de custo.</li>
+              <li>Relatórios agrupáveis por centro de custo, local, responsável, status, tipo ou marca, em CSV e PDF.</li>
+            </ul>
+            <div class="tech">
+              <p class="lbl">Destaque técnico</p>
+              <p><b>Catálogos editáveis sem deploy:</b> tipos, marcas, modelos e locais são dados, não código. Um modelo traz a descrição padrão para o equipamento.</p>
+              <p><b>Segurança:</b> JWT com refresh transparente, senhas com Argon2, rate limit no login e log de auditoria com autor e payload.</p>
+            </div>
+          </div>
+          <div class="foot"><span class="stack">+ FastAPI · Next.js 16 · Tailwind v4 · shadcn/ui · PostgreSQL 16 · Alembic</span><span class="num">119 commits · 260+ testes</span></div>
+        </div>
+      </div>
+
+      <!-- Receita -->
+      <div class="commit">
+        <div class="when">jun 2026</div><div class="rail"></div>
+        <div class="box">
+          <div class="row"><span class="hash">Gerenciamento_de_Receita</span><span class="ref pf">plataforma UFC</span><span class="ref ok">em produção</span></div>
+          <h3>Receitas: o fechamento do mês sem planilha</h3>
+          <p class="pitch">Substituiu as planilhas mensais do financeiro por um painel único de contratos, notas fiscais, recebimentos e previsão de faturamento, com perfis de acesso e auditoria de cada alteração.</p>
+          <div class="cols">
+            <ul>
+              <li>Dashboard com faturado, recebido, em aberto e previsto, e os quadros Previsto × Realizado e Faturado × Recebido.</li>
+              <li>Contratos com saldo calculado e histórico de reajustes de valor e prazo.</li>
+              <li>Cartas de encaminhamento geradas de um modelo Word por contrato, com valor por extenso e numeração automática por ano.</li>
+              <li>Relatório mensal em PDF, relação de compromissos e de faturas em aberto em PDF e Excel.</li>
+              <li>Importação de planilha por partes, tolerante a erros: grava as linhas válidas e aponta as outras.</li>
+            </ul>
+            <div class="tech">
+              <p class="lbl">Destaque técnico</p>
+              <p><b>O "realizado" não é digitado:</b> sai do faturamento. E editar um reajuste antigo reencadeia os posteriores para o histórico continuar batendo.</p>
+              <p><b>Pré-visualização que não consome número:</b> a carta mostra o próximo número de ofício, mas só a geração final o grava.</p>
+            </div>
+          </div>
+          <div class="foot"><span class="stack">+ Ruby on Rails 8.1 · Hotwire · Tailwind v4 · Pundit · PaperTrail · Prawn · LibreOffice · PostgreSQL 16</span><span class="num">202 commits · 410+ testes · CI no GitHub Actions</span></div>
+        </div>
+      </div>
+
+      <!-- Control_Coin -->
+      <div class="commit branch">
+        <div class="when">jul 2026</div><div class="rail"></div>
+        <div class="box">
+          <div class="row"><span class="hash">Control_Coin</span><span class="ref br">branch pessoal · em desenvolvimento</span></div>
+          <h3>Control_Coin: finanças pessoais com rigor de engenharia</h3>
+          <p class="pitch">Meu projeto pessoal de controle financeiro: carteiras, contas e cartões, parcelamentos, faturas, orçamentos, metas e custo de vida. Comecei pela especificação completa e só depois escrevi o código.</p>
+          <div class="spine"><b>Transação</b> → uma compra &nbsp;·&nbsp; <b>Parte</b> → quem pagou quanto &nbsp;·&nbsp; <b>Liquidação</b> → cada parcela que sai da conta</div>
+          <div class="cols">
+            <ul>
+              <li>39 regras de negócio numeradas, 12 casos de uso e modelo de dados em três níveis (conceitual → lógico → físico).</li>
+              <li>Cartão com função crédito e/ou débito; a fatura segue o dia de fechamento, e compra feita no fechamento cai no ciclo novo.</li>
+              <li>Uma compra pode ser dividida entre cartões e parcelada: saldos, orçamento e custo de vida são sempre calculados a partir das parcelas.</li>
+              <li>Custo de vida pela média dos meses completos, com visão só do essencial e previsão.</li>
+            </ul>
+            <div class="tech">
+              <p class="lbl">Destaque técnico</p>
+              <p><b>Nenhum valor derivado é guardado.</b> Saldo, total de fatura e consumo do orçamento são calculados na leitura, então nada diverge.</p>
+              <p><b>Uma trava de CI exige um teste para cada regra</b>: um script falha o pipeline se alguma BR não aparecer num teste. O pipeline roda no Jenkins contra PostgreSQL real.</p>
+            </div>
+          </div>
+          <div class="foot"><span class="stack">+ NestJS · Next.js 15 · React 19 · Prisma · PostgreSQL · Turborepo · Vitest · Jenkins · Docker</span><span class="num">128 testes · em breve no GitHub</span></div>
+        </div>
+      </div>
+
+      <!-- Controle + SSO -->
+      <div class="commit head">
+        <div class="when">set 2026</div><div class="rail"></div>
+        <div class="box">
+          <div class="row"><span class="hash">Controle_Despesa + infra</span><span class="ref pf">plataforma UFC</span><span class="ref">HEAD → main</span><span class="ref ok">em produção</span></div>
+          <h3>Controle de Despesa e o login único</h3>
+          <p class="pitch">O quinto sistema, e a peça que junta todos: um Keycloak que dá a cada pessoa um único login para a plataforma inteira, com acesso liberado por grupo.</p>
+          <div class="cols">
+            <ul>
+              <li>Controle de Despesa: importa a planilha do ERP, pesquisa por qualquer campo e gera PDF ou Excel com os totais calculados na hora.</li>
+              <li>Importação em duas etapas: prévia com as linhas problemáticas destacadas, depois confirmação.</li>
+              <li>Keycloak com um cliente OIDC por sistema e grupos de acesso; os usuários dos sistemas antigos foram migrados sem levar nenhuma senha.</li>
+              <li>Um script propaga o IP do servidor para todos os projetos, porque na rede interna não há DNS.</li>
+            </ul>
+            <div class="tech">
+              <p class="lbl">Destaque técnico</p>
+              <p><b>Testes contra PostgreSQL real:</b> 440+ testes, com o parser da planilha isolado para rodar sem Flask e sem banco.</p>
+              <p><b>Incidente resolvido:</b> um restore via PowerShell trocou cada acento por "??" no banco. Corrigi a causa e escrevi um reparo que reconstrói as palavras nos quatro bancos, com relatório e backup antes de gravar.</p>
+            </div>
+          </div>
+          <div class="foot"><span class="stack">+ Flask 3 · HTMX · WeasyPrint · XlsxWriter · Keycloak · OIDC · Docker Compose</span><span class="num">40 commits · 440+ testes</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <h2 class="h2">Stack <small>cat stack.txt</small></h2>
+    <div class="skills">
+      <div class="skill"><h3>backend/</h3><p>Python (FastAPI, Flask), Ruby on Rails, NestJS</p><small>APIs REST, camadas, autenticação JWT e OIDC</small></div>
+      <div class="skill"><h3>frontend/</h3><p>Next.js, React, TypeScript, Tailwind, shadcn/ui</p><small>Também Hotwire (Rails) e HTMX (Flask)</small></div>
+      <div class="skill"><h3>dados/</h3><p>PostgreSQL, SQLAlchemy, Prisma, Alembic</p><small>Modelagem, migrações, triggers, pg_dump</small></div>
+      <div class="skill"><h3>documentos/</h3><p>PDF, Excel e Word gerados pelo sistema</p><small>Prawn, WeasyPrint, XlsxWriter, exceljs, LibreOffice</small></div>
+      <div class="skill"><h3>infra/</h3><p>Docker Compose, Keycloak, Jenkins, GitHub Actions</p><small>Deploy em rede interna, backup e restauração</small></div>
+      <div class="skill"><h3>qualidade/</h3><p>pytest, RSpec, Vitest, TDD</p><small>Regra de negócio documentada e testada</small></div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    <p>git commit -m "vamos trabalhar juntos"<span>Aberto a vagas de desenvolvimento full stack.</span></p>
+    <div class="chips">
+      <a href="https://www.linkedin.com/in/jonatas-henrique-cruz-reis/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/JonatasHCR/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
