@@ -182,11 +182,11 @@
   .pf-text p { font-size: 16px; }
   .pf-text .pf-note { font-size: 14px; color: var(--branch); font-family: var(--mono); }
   .pf-map { display: grid; }
-  .pf-apps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .pf-apps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
   .pf-apps div { border: 1px solid var(--line); border-radius: 8px; padding: 10px; display: grid; gap: 2px; background: var(--bg); }
   .pf-apps b { font-size: 14px; line-height: 1.2; }
   .pf-apps span { font-size: 12px; color: var(--muted); line-height: 1.3; }
-  .pf-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; height: 22px; }
+  .pf-links { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; height: 22px; }
   .pf-links i { justify-self: center; width: 2px; background: repeating-linear-gradient(var(--hash) 0 4px, transparent 4px 7px); }
   .pf-hub { background: var(--hash); color: var(--card); border-radius: 8px; padding: 12px 14px; display: grid; gap: 2px; text-align: center; }
   .pf-hub b { font-family: var(--mono); font-size: 14px; font-weight: 700; }
@@ -195,6 +195,8 @@
   @media (max-width: 860px) {
     .platform { grid-template-columns: 1fr; padding: 20px; }
     .pf-apps, .pf-links { grid-template-columns: 1fr 1fr; }
+    .pf-apps div:last-child { grid-column: 1 / -1; }
+    .pf-links i:last-child { display: none; }
     .pf-links { height: 16px; }
   }
 </style>
@@ -223,8 +225,8 @@
       <a href="https://www.linkedin.com/in/jonatas-henrique-cruz-reis/" target="_blank" rel="noopener">in/jonatas-henrique-cruz-reis</a>
     </div>
     <div class="stats">
-      <div><b>5</b><span>sistemas construídos do zero</span></div>
-      <div><b>1.300+</b><span>testes automatizados</span></div>
+      <div><b>6</b><span>sistemas construídos do zero</span></div>
+      <div><b>1.600+</b><span>testes automatizados</span></div>
       <div><b>420+</b><span>commits no último ano</span></div>
       <div><b>3</b><span>linguagens: Python, Ruby, TypeScript</span></div>
     </div>
@@ -238,7 +240,7 @@
       <p class="big">Gosto de compreender o problema, seus requisitos e contexto antes de definir uma solução. Busco desenvolver aplicações eficientes, organizadas e de fácil manutenção, aplicando boas práticas de programação e aprimorando continuamente meus conhecimentos em desenvolvimento de software. Encaro novos desafios como oportunidades para aprender, experimentar novas tecnologias e evoluir minhas habilidades técnicas e profissionais.</p>
       <div class="text">
         <p>Trabalho de ponta a ponta. Modelo o banco, escrevo a API, construo a interface, coloco em produção com Docker e cuido do que vem depois: backup, auditoria, migração de dados e suporte a quem usa.</p>
-        <p>Hoje desenvolvo os sistemas internos da UFC Engenharia: faturamento e contratos, inventário de TI, contas a pagar e despesas por centro de custo, todos em produção e ligados por um login único. Uso três linguagens (Python, Ruby e TypeScript).</p>
+        <p>Hoje desenvolvo os sistemas internos da UFC Engenharia: faturamento e contratos, inventário de TI, contas a pagar, despesas por centro de custo e o controle financeiro que cruza receita e custo de cada contrato, todos ligados por um login único. Uso três linguagens (Python, Ruby e TypeScript).</p>
         <p>Em paralelo, curso Engenharia da Computação e levo para o código o que a engenharia ensina: requisito escrito antes de construir, e nada entregue sem teste.</p>
       </div>
     </div>
@@ -248,7 +250,7 @@
       <ol>
         <li><span class="y">2024</span><div><b>Automatizando documentos.</b> Meus primeiros projetos preenchiam documentos Word a partir de modelos, primeiro em script e depois numa aplicação Flask. Ali descobri que gosto de tirar trabalho repetitivo das pessoas.</div></li>
         <li><span class="y">2025</span><div><b>Aprendendo a fazer direito.</b> Estudei SOLID e TDD na prática, construí um aplicativo desktop de relatórios distribuído como executável e, em setembro, coloquei meu primeiro sistema em produção: o Radar.</div></li>
-        <li><span class="y">2026</span><div><b>De sistema a plataforma.</b> Vieram o inventário, as receitas e o controle de despesas, todos atrás de um único Keycloak, com mais de 1.300 testes somando os projetos. E um projeto pessoal, o Control_Coin, especificado por inteiro antes do código.</div></li>
+        <li><span class="y">2026</span><div><b>De sistema a plataforma.</b> Vieram o inventário, as receitas, o controle de despesas e o controle financeiro, todos atrás de um único Keycloak, com mais de 1.600 testes somando os projetos. E um projeto pessoal, o Control_Coin, especificado por inteiro antes do código.</div></li>
       </ol>
     </div>
 
@@ -266,18 +268,19 @@
     <div class="platform">
       <div class="pf-text">
         <p class="pf-kicker">Plataforma UFC Engenharia</p>
-        <h3>Quatro sistemas, uma plataforma</h3>
-        <p>Os sistemas abaixo não são projetos isolados. Cada um cuida de uma área da empresa, mas todos rodam no mesmo servidor, entram pelo mesmo login e conversam entre si: o inventário, por exemplo, busca os centros de custo direto da Receita.</p>
+        <h3>Cinco sistemas, uma plataforma</h3>
+        <p>Os sistemas abaixo não são projetos isolados. Cada um cuida de uma área da empresa, mas todos rodam no mesmo servidor, entram pelo mesmo login e conversam entre si: o inventário busca os centros de custo direto da Receita, e o Controle Financeiro lê a Receita e o Controle de Despesa por API para cruzar receita e custo de cada contrato.</p>
         <p class="pf-note">O Control_Coin é meu projeto pessoal e fica fora da plataforma.</p>
       </div>
-      <div class="pf-map" aria-label="Os quatro sistemas ligados ao login único">
+      <div class="pf-map" aria-label="Os cinco sistemas ligados ao login único">
         <div class="pf-apps">
           <div><b>Receita</b><span>faturamento e contratos</span></div>
           <div><b>InvControl</b><span>inventário de TI</span></div>
           <div><b>Radar</b><span>contas a pagar</span></div>
           <div><b>Controle de Despesa</b><span>despesas por centro de custo</span></div>
+          <div><b>Controle Financeiro</b><span>receita × custo por contrato</span></div>
         </div>
-        <div class="pf-links" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="pf-links" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <div class="pf-hub"><b>Login único · Keycloak</b><span>um usuário, acesso por grupo, um portal de entrada</span></div>
       </div>
     </div>
@@ -346,6 +349,7 @@
               <li>Cartas de encaminhamento geradas de um modelo Word por contrato, com valor por extenso e numeração automática por ano.</li>
               <li>Relatório mensal em PDF, relação de compromissos e de faturas em aberto em PDF e Excel.</li>
               <li>Importação de planilha por partes, tolerante a erros: grava as linhas válidas e aponta as outras.</li>
+              <li>Contrato desativado continua no histórico, mas recusa NF, recebimento, previsão e reajuste, inclusive pela importação.</li>
             </ul>
             <div class="tech">
               <p class="lbl">Destaque técnico</p>
@@ -353,7 +357,7 @@
               <p><b>Pré-visualização que não consome número:</b> a carta mostra o próximo número de ofício, mas só a geração final o grava.</p>
             </div>
           </div>
-          <div class="foot"><span class="stack">+ Ruby on Rails 8.1 · Hotwire · Tailwind v4 · Pundit · PaperTrail · Prawn · LibreOffice · PostgreSQL 16</span><span class="num">202 commits · 410+ testes · CI no GitHub Actions</span></div>
+          <div class="foot"><span class="stack">+ Ruby on Rails 8.1 · Hotwire · Tailwind v4 · Pundit · PaperTrail · Prawn · LibreOffice · PostgreSQL 16</span><span class="num">202 commits · 510+ testes · CI no GitHub Actions</span></div>
         </div>
       </div>
 
@@ -361,48 +365,75 @@
       <div class="commit branch">
         <div class="when">jul 2026</div><div class="rail"></div>
         <div class="box">
-          <div class="row"><span class="hash">Control_Coin</span><span class="ref br">branch pessoal · em desenvolvimento</span></div>
+          <div class="row"><span class="hash">Control_Coin</span><span class="ref br">branch pessoal · em desenvolvimento</span><span class="ref">no GitHub</span></div>
           <h3>Control_Coin: finanças pessoais com rigor de engenharia</h3>
-          <p class="pitch">Meu projeto pessoal de controle financeiro: carteiras, contas e cartões, parcelamentos, faturas, orçamentos, metas e custo de vida. Comecei pela especificação completa e só depois escrevi o código.</p>
+          <p class="pitch">Meu projeto pessoal de controle financeiro: carteiras, contas e cartões, parcelamentos, faturas, orçamentos, metas, lançamentos planejados e custo de vida. Comecei pela especificação completa e só depois escrevi o código.</p>
           <div class="spine"><b>Transação</b> → uma compra &nbsp;·&nbsp; <b>Parte</b> → quem pagou quanto &nbsp;·&nbsp; <b>Liquidação</b> → cada parcela que sai da conta</div>
           <div class="cols">
             <ul>
-              <li>39 regras de negócio numeradas, 12 casos de uso e modelo de dados em três níveis (conceitual → lógico → físico).</li>
+              <li>40 regras de negócio numeradas, 13 casos de uso e modelo de dados em três níveis (conceitual → lógico → físico).</li>
               <li>Cartão com função crédito e/ou débito; a fatura segue o dia de fechamento, e compra feita no fechamento cai no ciclo novo.</li>
               <li>Uma compra pode ser dividida entre cartões e parcelada: saldos, orçamento e custo de vida são sempre calculados a partir das parcelas.</li>
               <li>Custo de vida pela média dos meses completos, com visão só do essencial e previsão.</li>
+              <li>Lançamentos planejados, importação de extrato em CSV, backup e exportação dos dados, central de notificações e resumo mensal em PDF.</li>
             </ul>
             <div class="tech">
               <p class="lbl">Destaque técnico</p>
               <p><b>Nenhum valor derivado é guardado.</b> Saldo, total de fatura e consumo do orçamento são calculados na leitura, então nada diverge.</p>
-              <p><b>Uma trava de CI exige um teste para cada regra</b>: um script falha o pipeline se alguma BR não aparecer num teste. O pipeline roda no Jenkins contra PostgreSQL real.</p>
+              <p><b>Uma trava de CI exige um teste para cada regra</b>: um script falha o pipeline se alguma BR não aparecer num teste. O pipeline roda no Jenkins contra PostgreSQL real, publica as imagens, sobe em homologação e só vai para produção com aprovação manual.</p>
             </div>
           </div>
-          <div class="foot"><span class="stack">+ NestJS · Next.js 15 · React 19 · Prisma · PostgreSQL · Turborepo · Vitest · Jenkins · Docker</span><span class="num">128 testes · em breve no GitHub</span></div>
+          <div class="foot"><span class="stack">+ NestJS · Next.js 15 · React 19 · Prisma · PostgreSQL · Turborepo · Vitest · Jenkins · Docker</span><span class="num">150+ testes · <a href="https://github.com/JonatasHCR/Control_Coin" target="_blank" rel="noopener">ver no GitHub</a></span></div>
         </div>
       </div>
 
       <!-- Controle + SSO -->
-      <div class="commit head">
+      <div class="commit">
         <div class="when">set 2026</div><div class="rail"></div>
         <div class="box">
-          <div class="row"><span class="hash">Controle_Despesa + infra</span><span class="ref pf">plataforma UFC</span><span class="ref">HEAD → main</span><span class="ref ok">em produção</span></div>
+          <div class="row"><span class="hash">Controle_Despesa + infra</span><span class="ref pf">plataforma UFC</span><span class="ref ok">em produção</span></div>
           <h3>Controle de Despesa e o login único</h3>
           <p class="pitch">O quinto sistema, e a peça que junta todos: um Keycloak que dá a cada pessoa um único login para a plataforma inteira, com acesso liberado por grupo.</p>
           <div class="cols">
             <ul>
               <li>Controle de Despesa: importa a planilha do ERP, pesquisa por qualquer campo e gera PDF ou Excel com os totais calculados na hora.</li>
+              <li>Painel com gráficos que filtram ao clicar, filtros com busca e seleção múltipla, lançamento aberto num painel lateral e relatório com detalhamento por grupo.</li>
               <li>Importação em duas etapas: prévia com as linhas problemáticas destacadas, depois confirmação.</li>
               <li>Keycloak com um cliente OIDC por sistema e grupos de acesso; os usuários dos sistemas antigos foram migrados sem levar nenhuma senha.</li>
               <li>Um script propaga o IP do servidor para todos os projetos, porque na rede interna não há DNS.</li>
             </ul>
             <div class="tech">
               <p class="lbl">Destaque técnico</p>
-              <p><b>Testes contra PostgreSQL real:</b> 440+ testes, com o parser da planilha isolado para rodar sem Flask e sem banco.</p>
+              <p><b>Testes contra PostgreSQL real:</b> 580+ testes, com o parser da planilha isolado para rodar sem Flask e sem banco.</p>
               <p><b>Incidente resolvido:</b> um restore via PowerShell trocou cada acento por "??" no banco. Corrigi a causa e escrevi um reparo que reconstrói as palavras nos quatro bancos, com relatório e backup antes de gravar.</p>
             </div>
           </div>
-          <div class="foot"><span class="stack">+ Flask 3 · HTMX · WeasyPrint · XlsxWriter · Keycloak · OIDC · Docker Compose</span><span class="num">40 commits · 440+ testes</span></div>
+          <div class="foot"><span class="stack">+ Flask 3 · HTMX · Chart.js · WeasyPrint · XlsxWriter · Keycloak · OIDC · Docker Compose</span><span class="num">40 commits · 580+ testes</span></div>
+        </div>
+      </div>
+
+      <!-- Controle Financeiro -->
+      <div class="commit head">
+        <div class="when">out 2026</div><div class="rail"></div>
+        <div class="box">
+          <div class="row"><span class="hash">Controle_Financeiro</span><span class="ref pf">plataforma UFC</span><span class="ref">HEAD → main</span><span class="ref">em implantação</span></div>
+          <h3>Controle Financeiro: receita × custo de cada contrato</h3>
+          <p class="pitch">O sexto sistema junta os outros: lê os contratos e o faturamento da Receita e, só para esses contratos, as despesas do Controle de Despesa. Mostra, contrato a contrato, quanto entrou, quanto saiu e para onde o resultado está indo. O relatório sai em PDF gerado pelo próprio sistema.</p>
+          <div class="cols">
+            <ul>
+              <li>Da receita ao resultado em cascata: receita bruta, tributos, taxa administrativa, custo-alvo, custo realizado e resultado.</li>
+              <li>Execução financeira × tempo transcorrido, tendência de custo por item, markup contratual, atual e final, prazos e vigências.</li>
+              <li>Filtros com seleção múltipla e busca por cliente, coordenador e centro de custo; período por mês, acumulado ou de data a data.</li>
+              <li>Só visualiza: o que as origens não têm (custo-alvo dos itens, BMs, pendências, pleitos) entra por telas próprias ou por planilha modelo com prévia.</li>
+              <li>Os itens nascem das naturezas da despesa; na configuração, várias naturezas podem ser agrupadas num mesmo item com custo-alvo.</li>
+            </ul>
+            <div class="tech">
+              <p class="lbl">Destaque técnico</p>
+              <p><b>Sincronização que não perde nada:</b> cópia incremental paginada pela última linha lida, exclusões registradas por trigger no banco de origem e conferência de quantidade e soma contra a API, com recarga completa se algo divergir.</p>
+              <p><b>Um cálculo só para tela, JSON e PDF:</b> o Chromium headless renderiza a mesma página do painel, então os números do relatório são os da tela.</p>
+            </div>
+          </div>
+          <div class="foot"><span class="stack">+ Flask 3 · SQLAlchemy 2 · Chart.js · Playwright · XlsxWriter · Keycloak · PostgreSQL 17</span><span class="num">170+ testes</span></div>
         </div>
       </div>
 
